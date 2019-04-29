@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>
+            Title
+        </title>
+        <style>
+               :root {
+                   --windowDark: black;
+                   --windowLight: #3d3d3d;
+
+                   --primaryColor: purple;
+                   --primaryTextColor: #fff;
+               }
+
+            body {
+                margin: 0px;
+                background-color: var(--windowDark);
+            }
+
+            .card {
+                box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+
+                padding: 16px;
+                border-radius: 20px;
+                overflow: hidden;
+                color:var(--primaryTextColor);
+                background-color: var(--windowLight);
+            }
+
+            .card h1 {
+                margin:0px;
+            }
+
+            .card p {
+                margin: 0px;
+            }
+
+            button {
+                cursor: pointer;
+                box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+                padding: 8px;
+                border-radius: 512px;
+                color: var(--primaryTextColor);
+                background-color: var(--primaryColor);
+                border: 0px;
+                outline: 0px;
+            }
+        </style>
+        <script>
+        $(function() {
+if(getCookie("theme" != "")) {
+setTheme(getCookie("theme"));
+} else {
+
+}
+
+          $("#lightThemeButton").click(function() {
+              document.cookie = "theme=light";
+          setTheme("light");
+          });
+
+             $("#darkThemeButton").click(function() {        
+           document.cookie = "theme=dark";
+           setTheme("dark");
+          });
+        });
+
+        function setTheme(theme) {
+            switch(theme) {
+              case "dark" :
+                $(":root").css("--windowDark", "black");
+            $(":root").css("--windowLight", "#3d3d3d");
+            $(":root").css("--primaryTextColor", "white");
+            $(":root").css("--primaryColor", "purple");
+              break;
+              case "light":
+              $(":root").css("--windowDark", "#e0e0e0");
+            $(":root").css("--windowLight", "white");
+            $(":root").css("--primaryTextColor", "black");
+            $(":root").css("--primaryColor", "cyan");
+              break;
+             
+            }
+        }
+
+        function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+} 
+        </script>
+    </head>
+    <body>
+        <div>
+            <button id="lightThemeButton">Light theme</button>
+            <button id="darkThemeButton">Dark theme</button>
+        </div>
+   <div class="card" style="margin:8px;">
+       <h1>Title</h1>
+       <p>Paragraph this shit bro.</p>
+   </div>
+    </body>
+</html>
